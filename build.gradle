@@ -1,8 +1,0 @@
-
-plugins {
-  id "org.sonarqube" version "3.0"
-}
-./gradlew sonarqube \
-  -Dsonar.projectKey=nishant \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=0858c328a8b5c5653d4f5cf95ad8c3e8209b36dc
