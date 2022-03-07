@@ -1,10 +1,10 @@
 node {
   stage('SCM') {
-    checkout scm
+    git 'https://github.com/foo/bar.git'
   }
-  stage('SonarQube Analysis') {
-    withSonarQubeEnv() {
-      sh "./gradlew sonarqube"
+  stage('SonarQube analysis') {
+    withSonarQubeEnv() { // Will pick the global server connection you have configured
+      sh './gradlew sonarqube'
     }
   }
 }
