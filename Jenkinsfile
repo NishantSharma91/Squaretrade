@@ -1,10 +1,11 @@
 node {
   stage('SCM') {
-    checkout scm
+    git 'https://github.com/foo/bar.git'
   }
-  stage('SonarQube Analysis') {
-    withSonarQubeEnv() {
-      sh "./gradlew sonarqube"
+  stage('SonarQube analysis') {
+    def scannerHome = tool 'SonarScanner 4.0';
+    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+      bat "${scannerHome}/bin/sonar-scanner"
     }
   }
 }
